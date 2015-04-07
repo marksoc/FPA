@@ -49,19 +49,26 @@ angular.module('routerApp', [
         // Home //
         //////////
 
-        .state("home", {
-
+        .state("plan", {
+      abstract: true,
           // Use a url of "/" to set a states as the "index".
-          url: "/",
+          url: "/plan",
+  
+             templateUrl: 'tpls/ExperimentPlan.html'
+       
 
-          // Example of an inline template string. By default, templates
-          // will populate the ui-view within the parent state's template.
-          // For top level states, like this one, the parent template is
-          // the index.html file. So this template will be inserted into the
-          // ui-view within index.html.
+      
+
+        }).state('plan.detail',{
+            url:'',
           templateUrl: 'tpls/PlanDetail.html'
 
-        })
+      }).state('plan.edit',{
+            url:'/edit',
+          templateUrl: 'tpls/edit.html'
+
+      })
+
 
         ///////////
         // About //
