@@ -1,1 +1,21 @@
-<div>hello</div>
+ <h2 class="sub-header" >{{cate.name}}</h2>
+  
+  <div class="panel panel-default" ng-repeat="jili in cate.jilis" >
+  <div ng-click="onMouseOver()" class="panel-heading" ng-mouseleave="onMouseLeave()" >
+    <h3  ng-hide="ifshow" class="panel-title">运行机理：<small>{{jili.name}}   </small>  &nbsp;&nbsp;&nbsp;  代号：<small> {{jili.code}}</small>  {{$index+'show'}} </h3>
+  </div>
+    <table class="table">
+    <tr>
+<th>特征点名称</th>
+<th>鉴定计划</th>
+<th>特征点代号</th>
+<th>关联度</th>
+    </tr>
+    <tr ng-repeat="tezheng in jili.tezhengs">
+    	<td>{{tezheng.name}}</td>
+<td>{{tezheng.plan}}</td>
+<td>{{tezheng.code}}</td>
+<td>{{tezheng.relation}}</td>
+    </tr>
+  </table>
+</div>

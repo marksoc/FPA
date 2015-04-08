@@ -1,2 +1,18 @@
-ExperimentPlan.html
-<div ui-view></div>
+<div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <div class="panel panel-default">
+  <div class="panel-heading">鉴定分类</div>
+  <div class="panel-body">
+	    <div class="list-group">
+	
+	  <a ng-repeat="cate in cates | limitTo:12" ui-sref-active="disabled" ui-sref="plan.detail({detailId:cate.id})" class="list-group-item">{{cate.name}}</a>
+	</div>
+  </div>
+   <div class="panel-footer">
+ <button class="btn btn-default" ng-click="addCate()">添加分类</button>
+   </div>
+</div>
+
+        </div>
+<div ui-view class="col-sm-9  col-md-10  main"></div>
+</div>

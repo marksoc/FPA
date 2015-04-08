@@ -1,0 +1,25 @@
+ <h2 class="sub-header">鉴定分类</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>名称</th>
+                  <th>创建人</th>
+                  <th>创建时间</th>
+                  <th>修改时间</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr  ng-repeat="cate in cates " >
+                  <td>{{$index}}</td>
+          <td>{{cate.name}}</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>

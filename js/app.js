@@ -1,5 +1,7 @@
 // Make sure to include the `ui.router` module as a dependency
 angular.module('routerApp', [
+  'routerApp.service',
+  'routerApp.utils.service',
   'ui.router', 
   'ngAnimate'
 ])
@@ -54,14 +56,44 @@ angular.module('routerApp', [
           // Use a url of "/" to set a states as the "index".
           url: "/plan",
   
-             templateUrl: 'tpls/ExperimentPlan.html'
+          templateUrl: 'tpls/ExperimentPlan.html',
+          resolve: {     
+            cates: ['cates',
+              function( cates){
+                return cates.all();
+              }]
+          },
+          controller: ['$scope', '$state', 'cates', 'utils',
+            function (  $scope,   $state,   cates,   utils) {
+               $scope.cates = cates;
+               $scope.addCate=function(){
+                  $state.go('plan.edit');
+               };
+             }]
        
 
       
 
-        }).state('plan.detail',{
+        }).state('plan.list',{
             url:'',
-          templateUrl: 'tpls/PlanDetail.html'
+          templateUrl: 'tpls/cate.list.html'
+
+      }).state('plan.detail',{
+            url:'/{detailId:[0-9]{1,4}}',
+          templateUrl: 'tpls/PlanDetail.html',
+          controller:['$scope','$stateParams','utils',
+            function($scope,$stateParams,utils){
+              $scope.cate = utils.findById($scope.cates, $stateParams.detailId);
+               $scope.onMouseLeave = function(){
+alert('le');
+              };
+              $scope.onMouseOver = function(){
+alert('mo');
+              };
+              
+      }
+          ]
+
 
       }).state('plan.edit',{
             url:'/edit',
